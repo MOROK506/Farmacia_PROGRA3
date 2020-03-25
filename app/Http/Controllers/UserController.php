@@ -16,20 +16,30 @@ class UserController extends Controller
     {
 
     $users = User::all();
-    return view('usuarios', ['users' => $users]);
+    return view('usuarios.index', ['users' => $users]);
     /* hacemos referencia a la variable user para que nos devuelva todo y los retornamos 
     a la vista de usuarios */
     }
     //mostrar el formulario para crear un nuevo registro
     public function create()
     {
+        return view('usuarios.create');
 
     }
 
     //almacena los registros recien creados de create en la base de datos
-     public function store()
+     public function store(Request $request)
     {
-        # code...
+        $usuario = new User();
+
+        $usuario->name = request('name');
+        $usuario->email = request('email');
+        $usuario->password = request('password');
+
+        $usuario->save();
+
+        return redirect('/usuarios');
+
     }
     //mostramos un registro especifico
     public function show()
@@ -37,14 +47,23 @@ class UserController extends Controller
 
     }
     //muestra el formulario con los datos a editar de un registro especifico
-    public function edit()
+    public function edit($id)
     {
-        # code...
+       return view('usuarios.edit', ['user' => User::findOrFail($id)]);
     }
     // actualiza un registro en la bd
-    public function update()
+    public function update(Request $request, $id)
     {
-        # code...
+        $usuario =  User::findOrFail('$id');
+
+        $usuario->name = $request->get('name');
+        $usuario->email = $request->get('email');
+        
+
+        $usuario->update();
+
+        return redirect('/usuarios');
+
     }
 
     // elimina un registro en la bd
