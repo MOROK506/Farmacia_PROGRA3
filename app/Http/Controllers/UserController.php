@@ -42,9 +42,13 @@ class UserController extends Controller
 
     }
     //mostramos un registro especifico
-    public function show()
+    public function show($id)
     {
+       
 
+         
+         
+        return view('usuarios.show', ['user' => User::findOrFail($id)]);
     }
     //muestra el formulario con los datos a editar de un registro especifico
     public function edit($id)
@@ -52,23 +56,26 @@ class UserController extends Controller
        return view('usuarios.edit', ['user' => User::findOrFail($id)]);
     }
     // actualiza un registro en la bd
-    public function update(Request $request, $id)
+    public function update(Request $request, User $usuario)
     {
-        $usuario =  User::findOrFail('$id');
+        // $usuario =  User::findOrFail('$id');
 
-        $usuario->name = $request->get('name');
-        $usuario->email = $request->get('email');
+        // $usuario->name = $request->get('name');
+        // $usuario->email = $request->get('email');
         
 
-        $usuario->update();
+        // $usuario->update();
 
-        return redirect('/usuarios');
-
+         
+         $usuario->update($request->all());
+         return redirect('/usuarios');
     }
 
     // elimina un registro en la bd
-    public function destroy()
+    public function destroy($id)
     {
-        # code...
+        $usuario = User::findOrFail($id);
+        $usuario->delete();
+        return redirect('/usuarios');
     }
 }

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-6"></div>
 <form action="/usuarios" method="POST">
-    @CSRF
+    @csrf
     <div class="form-group">
       <label for="name">Nombre</label>
       <input type="text" class="form-control" name="name" placeholder="Nombre">

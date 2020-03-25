@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6"></div>
-    <form action="{{route('usuarios.update', $user->id)}}" method="POST">
+    <form action="{{route('usuarios.update', $user)}}" method="POST">
         @method('PATCH')<!-- Este metodo nos sirve para actualizar directamente con nuestro metodo update--> 
-        
+        @csrf
     <div class="form-group">
       <label for="name">Nombre</label>
       <input type="text" class="form-control" name="name" value="{{$user->name}}"  placeholder="Nombre">
