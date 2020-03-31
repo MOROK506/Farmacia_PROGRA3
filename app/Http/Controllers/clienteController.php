@@ -4,77 +4,71 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
-// importamos el modelo user 
-class UserController extends Controller
+use App\Cliente;
+
+// importamos el modelo Cliente
+
+class ClienteController extends Controller
 {
-    /* esta funcion  vamos a hacer uso de el modelo el cual nos retorna 
+    /* esta funcion  vamos a hacer uso de el modelo el cual nos retorna
     data de la bd para mostrarlos directo en el navegador*/
     //mostrar una lista de registros
     public function index()
-    
     {
-
-    $users = User::all();
-    return view('usuarios.index', ['users' => $users]);
-    /* hacemos referencia a la variable user para que nos devuelva todo y los retornamos 
-    a la vista de usuarios */
+        $clientes = Cliente::all();
+        return view('clientes.index', ['Clientes' => $clientes]);
+        /* hacemos referencia a la variable Cliente para que nos devuelva todo y los retornamos
+        a la vista de usuarios */
     }
     //mostrar el formulario para crear un nuevo registro
     public function create()
     {
         return view('usuarios.create');
-
     }
 
     //almacena los registros recien creados de create en la base de datos
-     public function store(Request $request)
+    public function store(Request $request)
     {
-        $usuario = new User();
+        $cliente = new Cliente();
 
-        $usuario->name = request('name');
-        $usuario->email = request('email');
-        $usuario->password = request('password');
+        $cliente->name = request('name');
+        $cliente->email = request('email');
+        $cliente->password = request('password');
 
-        $usuario->save();
+        $cliente->save();
 
         return redirect('/usuarios');
-
     }
     //mostramos un registro especifico
     public function show($id)
     {
-       
-
-         
-         
-        return view('clientes.show', ['cliente' => cliente::findOrFail($id)]);
+        return view('clientes.show', ['cliente' => Cliente::findOrFail($id)]);
     }
     //muestra el formulario con los datos a editar de un registro especifico
     public function edit($id)
     {
-       return view('clientes.edit', ['cliente' => cliente::findOrFail($id)]);
+        return view('clientes.edit', ['cliente' => Cliente::findOrFail($id)]);
     }
     // actualiza un registro en la bd
-    public function update(Request $request, cliente $cliente)
+    public function update(Request $request, Cliente $cliente)
     {
-        // $usuario =  User::findOrFail('$id');
+        // $cliente =  Cliente::findOrFail('$id');
 
-        // $usuario->name = $request->get('name');
-        // $usuario->email = $request->get('email');
-        
+        // $cliente->name = $request->get('name');
+        // $cliente->email = $request->get('email');
 
-        // $usuario->update();
 
-         
-         $cliente->update($request->all());
-         return redirect('/clientes');
+        // $cliente->update();
+
+
+        $cliente->update($request->all());
+        return redirect('/clientes');
     }
 
     // elimina un registro en la bd
     public function destroy($id)
     {
-        $cliente = User::findOrFail($id);
+        $cliente = Cliente::findOrFail($id);
         $cliente->delete();
         return redirect('/clientes');
     }

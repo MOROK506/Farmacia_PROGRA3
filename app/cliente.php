@@ -3,10 +3,10 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\cliente as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class cliente extends Authenticatable
+class Cliente extends Authenticatable
 {
     use Notifiable;
 
