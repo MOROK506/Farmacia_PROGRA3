@@ -5,6 +5,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">{{$cliente->name}}</h1>
+      <h1 class="display-4">{{$cliente->cedula}}</h1>
     <p class="lead">{{$cliente->email}}</p>
     </div>
   </div>

@@ -16,14 +16,14 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = Cliente::all();
-        return view('clientes.index', ['Clientes' => $clientes]);
+        return view('clientes.index', ['clientes' => $clientes]);
         /* hacemos referencia a la variable Cliente para que nos devuelva todo y los retornamos
         a la vista de usuarios */
     }
     //mostrar el formulario para crear un nuevo registro
     public function create()
     {
-        return view('usuarios.create');
+        return view('clientes.create');
     }
 
     //almacena los registros recien creados de create en la base de datos
@@ -32,12 +32,13 @@ class ClienteController extends Controller
         $cliente = new Cliente();
 
         $cliente->name = request('name');
+        $cliente->cedula = request('cedula');
         $cliente->email = request('email');
         $cliente->password = request('password');
 
         $cliente->save();
 
-        return redirect('/usuarios');
+        return redirect('/clientes');
     }
     //mostramos un registro especifico
     public function show($id)

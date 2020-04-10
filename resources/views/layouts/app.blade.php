@@ -59,7 +59,7 @@
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
                 <a href="{{ url('/') }}" class="brand-link">
-                    <img src="{{asset('dist/img/FARMACIA.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    <img src="{{asset('dist/img/FARMACIa.png') }}" alt="Farmacia" class="brand-image img-circle elevation-3"
                         style="opacity: .8">
                     <span class="brand-text font-weight-light">Farmacia</span>
                 </a>
@@ -124,6 +124,17 @@
                                         clientes
                                         <?php use App\cliente; $clientes_count = cliente::all()->count(); ?>
                                         <span class="right badge badge-danger">{{ $clientes_count ?? '0' }}</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/productos')}}"
+                                    class="{{ Request::path() === 'productos' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        productos
+                                        <?php use App\producto; $productos_count = producto::all()->count(); ?>
+                                        <span class="right badge badge-danger">{{ $productos_count ?? '0' }}</span>
                                     </p>
                                 </a>
                             </li>

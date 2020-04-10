@@ -9,6 +9,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
+        <th scope="col">Cedula</th>
         <th scope="col">Email</th>
         <th scope="col">Opciones</th>
       
@@ -20,6 +21,7 @@
         <tr>
             <th scope="row">{{$cliente->id}}</th>
             <td>{{$cliente->name}}</td>
+            <td>{{$cliente->cedula}}</td>
             <td>{{$cliente->email}}</td>
             <td>
               
