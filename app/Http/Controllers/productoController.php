@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Producto;
 
 class productoController extends Controller
 {
@@ -24,7 +25,7 @@ class productoController extends Controller
     {
         $producto = new producto();
 
-        $producto->name = request('name');
+        $producto->nombre = request('nombre');
         $producto->descripcion = request('descripcion');
         $producto->image = request('image');
         $producto->precio = request('precio');

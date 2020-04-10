@@ -7,8 +7,8 @@
 <form action="/productos" method="POST">
     @csrf
     <div class="form-group">
-      <label for="name">Nombre</label>
-      <input type="text" class="form-control" name="name" placeholder="Nombre">
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control" name="nombre" placeholder="Nombre">
 
       <div class="form-group">
         <label for="descripcion">descripcion</label>
@@ -18,9 +18,21 @@
        
       <div class="form-group">
         <label for="image">foto</label>
-        <input type="file" class="custom-file" name="img" placeholder="imagen">
+        <input type="file" class="custom-file" name="image" placeholder="imagen">
        
       </div>
+      <div class="form-group">
+        <label for="precio">precio</label>
+        <input type="decimal" class="form-control" name="precio" placeholder="precio">
+       
+      </div>
+        
+    
+    <div class="form-group">
+      <label for="cantidad">cantidad</label>
+      <input type="integer" class="form-control" name="cantidad" placeholder="cantidad">
+     
+    </div>
     </div>
     
     
